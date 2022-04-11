@@ -2,8 +2,10 @@
 ### (de) raumdeuter - (en) space interpreter.
 #
 ```
-for shell users who don't like to remember sequences of commands, raumd is a helper tool that customizes the interaction with the shell. 
-unlike other shell tools it is a hybrid between the on-premise nature of shell and the accessibility of a web based definition provided through https://airlocks.xyz. 
+for shell users who don't like to remember sequences of commands, 
+raumd is a helper tool that customizes the interaction with the shell. 
+unlike other shell tools it is a hybrid between the on-premise nature of shell 
+and the accessibility of a web based definition provided through https://airlocks.xyz. 
 ```
 
 ## why?

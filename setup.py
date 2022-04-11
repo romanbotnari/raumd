@@ -1,13 +1,15 @@
-from setuptools import setup, find_packages
+"""raumd installer."""
+
 from pathlib import Path
+from setuptools import setup, find_packages
 from main.__init__ import __version__
-  
-with open(Path('main') / 'requirements.txt') as f:
+
+with open(Path('main') / 'requirements.txt', encoding="utf-8") as f:
     requirements = f.readlines()
-  
-long_description = 'Raumdeuter runs your sequence of bash commands defined custom json files. \
+
+LONG_DESCRIPTION = 'Raumdeuter runs your sequence of bash commands defined custom json files. \
     This files can be created on the online platform https://airlocks.xyz.'
-  
+
 setup(
         name ='raumd',
         version =__version__,
@@ -15,7 +17,7 @@ setup(
         author_email ='romanbotnari@me.com',
         url ='',
         description ='.',
-        long_description = long_description,
+        long_description = LONG_DESCRIPTION,
         long_description_content_type ="text/markdown",
         license ='Apache License, Version 2.0',
         packages = find_packages(),
