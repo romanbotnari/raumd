@@ -1,4 +1,4 @@
-# raumd v0.0.1
+# raumd v0.0.2
 ### (de) raumdeuter - (en) space interpreter.
 #
 ```

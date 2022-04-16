@@ -19,13 +19,14 @@ def show(args):
     sequence = default
     idz = args.id
 
-    sequence_id = idz[0]
     if len(idz) == 0:
         one_element_seq = {'seq':[]}
         for entry in sequence:
             one_element_seq.get('seq').append({'id':entry})
         show_sequence(one_element_seq)
         return
+        
+    sequence_id = idz[0]
 
     found = False
     last_found_id = None
