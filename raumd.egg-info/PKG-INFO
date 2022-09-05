@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: raumd
+Version: 0.0.2
+Summary: .
+Home-page: UNKNOWN
+Author: Roman Botnari
+Author-email: romanbotnari@me.com
+License: Apache License, Version 2.0
+Description: Raumdeuter runs your sequence of bash commands defined custom json files.     This files can be created on the online platform https://airlocks.xyz.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown

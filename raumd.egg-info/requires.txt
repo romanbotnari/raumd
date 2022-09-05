@@ -1,0 +1,7 @@
+argcomplete==2.0.0
+colorama==0.4.4
+commonmark==0.9.1
+psutil==5.9.0
+Pygments==2.11.2
+rich==11.0.0
+python-json-logger==2.0.2

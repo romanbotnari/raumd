@@ -3,8 +3,8 @@
 #
 ```
 for shell users who don't like to remember sequences of commands, 
-raumd is a helper tool that customizes the interaction with the shell. 
-unlike other shell tools it is a hybrid between the on-premise nature of shell 
+raumd is a helper tool that customizes the interaction with the terminal. 
+unlike other tools it is a hybrid between the on-premise nature of shell 
 and the accessibility of a web based definition provided through https://airlocks.xyz. 
 ```
 
@@ -23,7 +23,7 @@ the aim with **raumd** is to create an intuitive, portable and robust shell tool
 raumd is a python script, so the prerequisite for using raumd is python, the programming language for running, and pip the package installer for installation. (version>=3) 
 
 ### airlocks.xyz
-the sequences are defined and downloaded from https://airlocks.xyz, that is a platform for defining sequences of things, developed by yours truly. raumd consumes and runs those sequences. 
+the sequences are defined and downloaded from https://airlocks.xyz, that is a platform for defining sequences(or even trees) of things, developed by yours truly. raumd consumes and runs those sequences. 
 
 ### sequence.json
 the sequences you download are aggregated into the **sequence.json** file. 
