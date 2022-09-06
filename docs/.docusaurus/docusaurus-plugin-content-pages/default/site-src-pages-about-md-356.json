@@ -1,0 +1,8 @@
+{
+  "type": "mdx",
+  "permalink": "/about",
+  "source": "@site/src/pages/about.md",
+  "title": "raumd v0.0.2",
+  "description": "what?",
+  "frontMatter": {}
+}

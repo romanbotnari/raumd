@@ -1,0 +1,48 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "tutorial-basics/231",
+              "path": "/docs/tutorial-basics/231",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "tutorial-basics/samplesequence",
+              "path": "/docs/tutorial-basics/samplesequence",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/examples",
+              "path": "/docs/category/examples",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

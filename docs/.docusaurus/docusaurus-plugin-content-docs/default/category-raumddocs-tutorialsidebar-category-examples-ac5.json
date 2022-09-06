@@ -1,0 +1,16 @@
+{
+  "title": "examples",
+  "description": "Some examples of how to use the raumd tool.",
+  "slug": "/category/examples",
+  "permalink": "/raumd/docs/category/examples",
+  "navigation": {
+    "previous": {
+      "title": "intro",
+      "permalink": "/raumd/docs/intro"
+    },
+    "next": {
+      "title": "samplesequence",
+      "permalink": "/raumd/docs/tutorial-basics/samplesequence"
+    }
+  }
+}

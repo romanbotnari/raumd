@@ -1,0 +1,22 @@
+{
+  "unversionedId": "tutorial-basics/231",
+  "id": "tutorial-basics/231",
+  "title": "231",
+  "description": "Download the sample file",
+  "source": "@site/docs/tutorial-basics/231.md",
+  "sourceDirName": "tutorial-basics",
+  "slug": "/tutorial-basics/231",
+  "permalink": "/docs/tutorial-basics/231",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "samplesequence",
+    "permalink": "/docs/tutorial-basics/samplesequence"
+  }
+}

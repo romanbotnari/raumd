@@ -1,0 +1,166 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "className": "docs-version-current",
+          "path": "/docs",
+          "tagsPath": "/docs/tags",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/Users/romanbotnari/Development/raumdeuter/docs/sidebars.js",
+          "contentPath": "/Users/romanbotnari/Development/raumdeuter/docs/docs",
+          "contentPathLocalized": "/Users/romanbotnari/Development/raumdeuter/docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "docs": [
+            {
+              "unversionedId": "intro",
+              "id": "intro",
+              "title": "intro",
+              "description": "prerequisites",
+              "source": "@site/docs/intro.md",
+              "sourceDirName": ".",
+              "slug": "/intro",
+              "permalink": "/docs/intro",
+              "draft": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "examples",
+                "permalink": "/docs/category/examples"
+              }
+            },
+            {
+              "unversionedId": "tutorial-basics/231",
+              "id": "tutorial-basics/231",
+              "title": "231",
+              "description": "Download the sample file",
+              "source": "@site/docs/tutorial-basics/231.md",
+              "sourceDirName": "tutorial-basics",
+              "slug": "/tutorial-basics/231",
+              "permalink": "/docs/tutorial-basics/231",
+              "draft": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "samplesequence",
+                "permalink": "/docs/tutorial-basics/samplesequence"
+              }
+            },
+            {
+              "unversionedId": "tutorial-basics/samplesequence",
+              "id": "tutorial-basics/samplesequence",
+              "title": "samplesequence",
+              "description": "Download the sample file",
+              "source": "@site/docs/tutorial-basics/samplesequence.md",
+              "sourceDirName": "tutorial-basics",
+              "slug": "/tutorial-basics/samplesequence",
+              "permalink": "/docs/tutorial-basics/samplesequence",
+              "draft": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "examples",
+                "permalink": "/docs/category/examples"
+              },
+              "next": {
+                "title": "231",
+                "permalink": "/docs/tutorial-basics/231"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "tutorialSidebar": [
+              {
+                "type": "doc",
+                "id": "intro"
+              },
+              {
+                "type": "category",
+                "label": "examples",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "tutorial-basics/samplesequence"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "tutorial-basics/231"
+                  }
+                ],
+                "link": {
+                  "type": "generated-index",
+                  "description": "Some examples of how to use the raumd tool.",
+                  "slug": "/category/examples",
+                  "permalink": "/docs/category/examples"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [],
+      "blogListPaginated": [],
+      "blogTags": {},
+      "blogTagsListPath": "/blog/tags",
+      "blogTagsPaginated": []
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "mdx",
+        "permalink": "/about",
+        "source": "@site/src/pages/about.md",
+        "title": "raumd v0.0.2",
+        "description": "what?",
+        "frontMatter": {}
+      },
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      },
+      {
+        "type": "mdx",
+        "permalink": "/markdown-page",
+        "source": "@site/src/pages/markdown-page.md",
+        "title": "Markdown page example",
+        "description": "You don't need React to write simple standalone pages.",
+        "frontMatter": {
+          "title": "Markdown page example"
+        }
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

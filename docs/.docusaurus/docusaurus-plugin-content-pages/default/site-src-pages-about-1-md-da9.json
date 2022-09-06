@@ -1,0 +1,8 @@
+{
+  "type": "mdx",
+  "permalink": "/about1",
+  "source": "@site/src/pages/about1.md",
+  "title": "this is just another about",
+  "description": "for shell users who don't like to remember sequences of commands, raumd is a helper tool that customizes the interaction with the terminal.",
+  "frontMatter": {}
+}
