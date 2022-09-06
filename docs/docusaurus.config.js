@@ -9,7 +9,7 @@ const config = {
   title: 'raumd',
   tagline: 'Your python based shell spaceship',
   url: 'https://romanbotnari.github.io/',
-  baseUrl: '/',
+  baseUrl: '/raumd/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
