@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkraumdeuter_info=self.webpackChunkraumdeuter_info||[]).push([[9700],{5688:function(a){a.exports=JSON.parse('{"label":"hola","permalink":"/blog/tags/hola","allTagsPath":"/blog/tags","count":1}')}}]);
