@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 import json
-from .console import console
+from console import console
 
 GET_INT_EXCEPTION = 'An exception occurred while getting the value for an integer parameter'
 

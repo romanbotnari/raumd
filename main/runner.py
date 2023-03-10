@@ -3,8 +3,8 @@ import subprocess
 import json
 from threading import Timer
 
-from .console import console
-from .configurer import configuration
+from console import console
+from configurer import configuration
 
 SEPARATOR = "="
 
@@ -39,6 +39,11 @@ def find_sequence(idz, sequence):
 
 def run(args):
     """run the sequence from sequence.json file."""
+    console.print("run")
+
+    console.print("ID")
+    console.print(args.id)
+    
     try:
         file = open (configuration['path'], "r", encoding="utf-8")
         default = json.load(file)
@@ -59,6 +64,37 @@ def run(args):
     with console.status("[blue]Running sequences...[/blue]\n"):
         try:
             run_sequence(run_this_sequence, args.params, options)
+        except Exception as exception:
+            console.print("An error occurred while running the sequences", style="bad")
+            console.print(exception, style="bad")
+
+def run_server(args):
+    """run the sequence from sequence.json file."""
+    console.print("run")
+
+    console.print("ID")
+    console.print(args['id'])
+    
+    try:
+        file = open (configuration['path'], "r", encoding="utf-8")
+        default = json.load(file)
+    except:
+        console.print ("There is no sequence file I can find at the configured path.", style='bad')
+        return
+
+    sequence = default
+
+    found, run_this_sequence = find_sequence(args['id'], sequence)
+
+    if not found:
+        console.print ("I have nothing to run")
+        return
+
+    options = {'dryrun': False, 'failearly': args['failearly'], 'verbose': args['verbose']}
+
+    with console.status("[blue]Running sequences...[/blue]\n"):
+        try:
+            run_sequence(run_this_sequence, args['params'], options)
         except Exception as exception:
             console.print("An error occurred while running the sequences", style="bad")
             console.print(exception, style="bad")

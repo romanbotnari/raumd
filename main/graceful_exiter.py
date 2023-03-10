@@ -1,6 +1,6 @@
 """captures the exit signal."""
 import signal
-from .console import console
+from console import console
 
 class GracefulExiter():
     """Helper class that intercepts the interrupt signal."""

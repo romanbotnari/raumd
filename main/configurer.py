@@ -4,10 +4,10 @@ import os
 from configparser import ConfigParser
 from pathlib import Path
 
-from .utility import get_boolean
-from .utility import get_int
-from .utility import get_sequence_file_path
-from .console import console
+from utility import get_boolean
+from utility import get_int
+from utility import get_sequence_file_path
+from console import console
 
 props = Path(os.path.dirname(__file__)) / "raumd.conf"
 configurer = ConfigParser()

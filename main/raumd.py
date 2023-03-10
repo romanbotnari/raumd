@@ -3,13 +3,16 @@
 import argparse
 import sys
 
-from .__init__ import __version__
-from .runner import run
-from .runner import dryrun
-from .importer import download
-from .configurer import configure
-from .inventory import show
-from .graceful_exiter import GracefulExiter
+from __init__ import __version__
+from runner import run
+from server import start_server
+from runner import dryrun
+from importer import download
+from configurer import configure
+from inventory import show
+from graceful_exiter import GracefulExiter
+
+START_SERVER_HELP = 'Starts the execution server.'
 
 RUN_HELP = 'Runs a command or a sequence.'
 RUN_ID_HELP = 'The sequence or command to be executed.'
@@ -41,6 +44,10 @@ def main():
     description = """Raumdeuter runs your sequence of bash commands defined in a json file."""
     parser = argparse.ArgumentParser(description = description)
     subparsers = parser.add_subparsers()
+
+    start_server_parser = subparsers.add_parser('start_server',
+        help = START_SERVER_HELP)
+    start_server_parser.set_defaults(func=start_server)
 
     run_parser = subparsers.add_parser('run',
         help = RUN_HELP)
@@ -105,7 +112,7 @@ def main():
     configure_parser.set_defaults(func=configure)
 
     parser.add_argument("-v", "--v", "-version", "--version", action = 'version',
-        version=__version__, default = None, help = "console prints the version of the script.")
+        version='0.1.1', default = None, help = "console prints the version of the script.")
 
     if len(sys.argv) <= 1:
         sys.argv.append('--help')

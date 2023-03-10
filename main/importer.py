@@ -2,9 +2,9 @@
 import json
 import urllib.request as urllib2
 
-from .configurer import configuration
-from .console import console
-from .utility import write_sequence_file
+from configurer import configuration
+from console import console
+from utility import write_sequence_file
 
 def download(args):
     """downloads sequence."""

@@ -1,8 +1,8 @@
 """lists the sequences and available commands."""
 import json
-from .configurer import configuration
-from .console import console
-from .utility import write_sequence_file
+from configurer import configuration
+from console import console
+from utility import write_sequence_file
 
 def show(args):
     """finds and prints the requested sequence"""
