@@ -4,7 +4,7 @@ import urllib
 from pathlib import PurePosixPath
 import json
 import urllib.request
-
+from console import console
 import os
 import time, threading, socket
 from socketserver import ThreadingMixIn
@@ -45,25 +45,36 @@ def set_no_cache_headers(request):
     request.setHeader('Pragma', 'no-cache')
     request.setHeader('Expires', '0')
 
-@app.route('/execute/<sequence>/', methods=['POST'])
-def pg_create(request, sequence):
+@app.route('/execute/<sequence>/', methods=['GET', 'OPTIONS'])
+def pg_execute(request, sequence):
     set_no_cache_headers(request)
+    logger.info("Am I here?.")
+    console.print("Am I here?.", style='good')
 
     logger.info("execute/sequence/" + sequence)
-    content = json.loads(request.content.read())
-    logger.info(content)
-
-    # args = dict(id= [sequence], failearly= False, verbose= False)
     args = {}
     args['id']=[sequence]
     args['failearly']=False
     args['verbose']=False
     args['params']=[]
     logger.info(args)
-    run_server(args)
-    f = open("out.json", "r")
+    run_server(args, sequence)
+    f = open(sequence, "r")
     data = f.read()
-    return data
+    console.print(data)
+    dictdata = json.loads(data)
+    jsondata = json.dumps(dictdata)
+        
+    request.write(jsondata.encode('utf-8'))
+    request.finish()
+
+@app.route('/get/<sequence>/', methods=['GET', 'OPTIONS'])
+def pg_get(request, sequence):
+    set_no_cache_headers(request)
+    logger.info("Am I here?.")
+    console.print("Am I here?.", style='good')
+
+    return sequence
 
 def start_server(args):
     try:

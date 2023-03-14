@@ -68,7 +68,7 @@ def run(args):
             console.print("An error occurred while running the sequences", style="bad")
             console.print(exception, style="bad")
 
-def run_server(args):
+def run_server(args, result_file_name):
     """run the sequence from sequence.json file."""
     console.print("run")
 
@@ -94,7 +94,7 @@ def run_server(args):
 
     with console.status("[blue]Running sequences...[/blue]\n"):
         try:
-            run_sequence(run_this_sequence, args['params'], options)
+            run_sequence_output_to_file(run_this_sequence, args['params'], options, result_file_name)
         except Exception as exception:
             console.print("An error occurred while running the sequences", style="bad")
             console.print(exception, style="bad")
@@ -165,6 +165,51 @@ def run_sequence(sub_seq, params, options):
             run_sequence(entry, params, options)
         else:
             console.print ("Bad sequence definition??")
+
+def run_sequence_output_to_file(sub_seq, params, options, result_file_name):
+    """start every process defined in the sequence."""
+    result_file = open(result_file_name, 'w')
+    result_file.flush()
+    if 'seq' not in sub_seq.keys() or sub_seq['seq'] is None:
+        console.print ('Nothing to run', style='bad')
+        return
+    for entry in sub_seq['seq']:
+        if "name" in entry.keys():
+            console.print ('[accent]name[/accent]   :', entry["name"])
+            comm = entry["command"]
+            if params is not None and len(params) > 0:
+                for parameter in params:
+                    if SEPARATOR in parameter:
+                        name, value = parameter.split(SEPARATOR, 1)
+                        comm = comm.replace(name, value)
+
+            console.print ('[accent]command[/accent]:', entry["command"])
+            if not options['dryrun']:
+                errcode = 0
+                try:
+                    with subprocess.Popen(comm, shell=True, stdout=result_file, bufsize=1, universal_newlines=True) as process:
+                        timer = Timer(configuration['timeout'], stop_process,[process])
+                        timer.start()
+                        for line in process.stdout:
+                            if options["verbose"] or configuration["_global_verbose"]:
+                                console.print(line, end='', markup=False)
+                finally:
+                    timer.cancel()
+
+                errcode = process.returncode
+                if errcode != 0:
+                    console.print("An error occurred while running the command!", style="bad")
+                    if options["failearly"] or configuration["_global_failearly"]:
+                        console.print('Fail early policy on, stopping execution.', style="bad")
+                        return
+                else:
+                    console.print("Sequence completed!", style="good")
+
+        elif "id" in entry.keys():
+            run_sequence(entry, params, options)
+        else:
+            console.print ("Bad sequence definition??")
+    return result_file
 
 def stop_process(process):
     """stop the process if the timeout was exceeded."""
