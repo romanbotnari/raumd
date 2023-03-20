@@ -168,7 +168,8 @@ def run_sequence(sub_seq, params, options):
 
 def run_sequence_output_to_file(sub_seq, params, options, result_file_name):
     """start every process defined in the sequence."""
-    result_file = open(result_file_name, 'w')
+
+    result_file = open(result_file_name, 'w+')
     result_file.flush()
     if 'seq' not in sub_seq.keys() or sub_seq['seq'] is None:
         console.print ('Nothing to run', style='bad')
@@ -209,6 +210,7 @@ def run_sequence_output_to_file(sub_seq, params, options, result_file_name):
             run_sequence(entry, params, options)
         else:
             console.print ("Bad sequence definition??")
+            result_file.close()
     return result_file
 
 def stop_process(process):

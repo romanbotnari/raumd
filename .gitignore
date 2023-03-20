@@ -1,0 +1,4 @@
+build/
+dist/
+main/__pycache__/
+raumd.egg-info/
