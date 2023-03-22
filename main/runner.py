@@ -87,7 +87,7 @@ def run_server(args, result_file_name):
     sequence = default
 
     found, run_this_sequence = find_sequence(args['id'], sequence)
-
+    result = {}
     if not found:
         console.print ("I have nothing to run")
         return
@@ -96,11 +96,12 @@ def run_server(args, result_file_name):
 
     try:
         result = run_sequence_output_to_file(run_this_sequence, args['params'], options)
-        with open(result_file_name, 'w') as fp:
-            json.dump(result, fp)
     except Exception as exception:
+        # result[args['id']] = {"status": "NOK", "error":exception}
         console.print("An error occurred while running the sequences", style="bad")
         console.print(exception, style="bad")
+
+    return result
 
 def dryrun(args):
     """dryrun the sequence from sequence.json file."""
@@ -202,10 +203,11 @@ def run_sequence_for_result(sub_seq, params, options):
 
                 errcode = process.returncode
                 if errcode != 0:
+                    result[sub_seq["id"]][len(result[sub_seq["id"]])] = { entry["name"]: "An error occurred while running the command!" }
                     console.print("An error occurred while running the command!", style="bad")
                     if options["failearly"] or configuration["_global_failearly"]:
                         console.print('Fail early policy on, stopping execution.', style="bad")
-                        return
+                        return result
                 else:
                     console.print("Sequence completed!", style="good")
 
@@ -219,6 +221,8 @@ def run_sequence_output_to_file(sub_seq, params, options):
     """start every process defined in the sequence."""
 
     result = {}
+    result[sub_seq["id"]] = []
+
     if 'seq' not in sub_seq.keys() or sub_seq['seq'] is None:
         console.print ('Nothing to run', style='bad')
         return
@@ -242,24 +246,22 @@ def run_sequence_output_to_file(sub_seq, params, options):
                         timer = Timer(configuration['timeout'], stop_process,[process])
                         timer.start()
                         output = process.stdout.read()
-                        result[entry["name"]] = output
-                        # for line in process.stdout:
-                        #     if options["verbose"] or configuration["_global_verbose"]:
-                        #         console.print(line, end='', markup=False)
+                        result[sub_seq["id"]].append({entry["name"] :output})
                 finally:
                     timer.cancel()
 
                 errcode = process.returncode
                 if errcode != 0:
+                    result[sub_seq["id"]][len(result[sub_seq["id"]]) -1] =  { entry["name"]: "An error occurred while running the command!" } 
                     console.print("An error occurred while running the command!", style="bad")
                     if options["failearly"] or configuration["_global_failearly"]:
                         console.print('Fail early policy on, stopping execution.', style="bad")
-                        return
+                        return result
                 else:
                     console.print("Sequence completed!", style="good")
 
         elif "id" in entry.keys():
-            result[entry["name"]] = run_sequence_for_result(entry, params, options)
+            result[sub_seq["id"]] = run_sequence_for_result(entry, params, options)
         else:
             console.print ("Bad sequence definition??")
     return result

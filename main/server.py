@@ -58,13 +58,9 @@ def pg_execute(request, sequence):
     args['verbose']=False
     args['params']=[]
     logger.info(args)
-    run_server(args, sequence)
-    f = open(sequence, "r")
-    data = f.read()
-    console.print(data)
+    result = run_server(args, sequence)
     try:
-        dictdata = json.loads(data)
-        jsondata = json.dumps(dictdata)
+        jsondata = json.dumps(result)
     except Exception as e:
         logger.info("An error occurred when assuming this is a json file.")
         dictdata = {}
@@ -72,6 +68,7 @@ def pg_execute(request, sequence):
         jsondata = json.dumps(dictdata)
         request.setResponseCode(400)
         
+    console.print(jsondata)
     request.write(jsondata.encode('utf-8'))
     request.finish()
 
