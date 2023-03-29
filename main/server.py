@@ -68,7 +68,7 @@ def pg_execute(request, sequence):
         jsondata = json.dumps(dictdata)
         request.setResponseCode(400)
         
-    console.print(jsondata)
+    console.print(jsondata, markup=False)
     request.write(jsondata.encode('utf-8'))
     request.finish()
 
