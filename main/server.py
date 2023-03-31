@@ -12,7 +12,8 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from klein import run, route, Klein, resource
 from runner import run_server
-
+import multiprocessing
+from twisted.internet import threads, reactor
 
 log_name = "server.log"
 
@@ -58,7 +59,12 @@ def pg_execute(request, sequence):
     args['verbose']=False
     args['params']=[]
     logger.info(args)
+
+    # result = threads.deferToThread(run_server, args, sequence)
     result = run_server(args, sequence)
+    console.print("result from thread")
+    console.print(result)
+    
     try:
         jsondata = json.dumps(result)
     except Exception as e:

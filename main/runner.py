@@ -195,9 +195,6 @@ def run_sequence_for_result(sub_seq, params, options):
                         timer.start()
                         output = process.stdout.read()
                         result[entry["name"]] = output
-                        # for line in process.stdout:
-                        #     if options["verbose"] or configuration["_global_verbose"]:
-                        #         console.print(line, end='', markup=False)
                 finally:
                     timer.cancel()
 
