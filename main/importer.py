@@ -27,6 +27,28 @@ def download(args):
             console.print('Couldn\'t find the sequence:', style='bad')
             console.print(sequence)
 
+def download_server(args, sequence):
+    """downloads sequence."""
+    write_sequence_file(configuration['path'])
+    console.print("downloads sequence")
+    with open (configuration['path'], "r", encoding="utf-8") as file:
+        console.print("hmmm...")
+        default = json.load(file)
+        console.print("hmmm2...")
+        console.print(default)
+        console.print(sequence)
+        console.print(args['id'])
+        with open (configuration['path'], "w", encoding="utf-8") as sequence_file:
+            console.print(args['id'][len(args['id']) -1])
+            new_sequence_name = args['id'][len(args['id']) -1]
+            console.print("new_sequence_name {}",new_sequence_name, style="good")
+            if args['rename'] is not None:
+                new_sequence_name = args['rename'][0]
+            console.print("new_sequence_name {}",sequence, style="good")
+            default[new_sequence_name] = sequence
+            json.dump(default, sequence_file)
+            console.print("Import succeded.", style="good")
+
 def download_sequence(sequence):
     """downloads sequence."""
     try:
