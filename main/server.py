@@ -15,6 +15,9 @@ from runner import run_server, find_sequence
 from importer import download_server
 from configurer import configuration
 
+from runner import run_server
+import multiprocessing
+from twisted.internet import threads, reactor
 
 log_name = "server.log"
 
@@ -60,7 +63,12 @@ def pg_execute(request, sequence):
     args['verbose']=False
     args['params']=[]
     logger.info(args)
+
+    # result = threads.deferToThread(run_server, args, sequence)
     result = run_server(args, sequence)
+    console.print("result from thread")
+    console.print(result)
+    
     try:
         jsondata = json.dumps(result)
     except Exception as e:
@@ -70,7 +78,7 @@ def pg_execute(request, sequence):
         jsondata = json.dumps(dictdata)
         request.setResponseCode(400)
         
-    console.print(jsondata)
+    console.print(jsondata, markup=False)
     request.write(jsondata.encode('utf-8'))
     request.finish()
 
